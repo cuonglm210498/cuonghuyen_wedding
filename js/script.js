@@ -270,24 +270,25 @@
   /*------------------------------------------
         = POPUP VIDEO
     -------------------------------------------*/
-  if ($(".video-play-btn").length) {
-    $(".video-play-btn").on("click", function () {
-      $.fancybox({
-        href: this.href,
-        type: $(this).data("type"),
-        title: this.title,
-        helpers: {
-          title: { type: "inside" },
-          media: {},
-        },
-
-        beforeShow: function () {
-          $(".fancybox-wrap").addClass("gallery-fancybox");
-        },
+    if ($(".video-play-btn").length) {
+      $(".video-play-btn").on("click", function () {
+        const href = "https://www.youtube.com/watch?v=GjYdNEV1S9Y";
+        $.fancybox({
+          type: "iframe",
+          href:
+            href.replace(new RegExp("watch\\?v=", "i"), "embed/") +
+            "?rel=0&autoplay=1",
+          overlayShow: true,
+          centerOnScroll: true,
+          speedIn: 100,
+          speedOut: 50,
+          width: 640,
+          height: 480,
+        });
+  
+        return false;
       });
-      return false;
-    });
-  }
+    }
 
   /*------------------------------------------
         = POPUP YOUTUBE, VIMEO, GMAPS
